@@ -1,0 +1,32 @@
+#header {
+    position: static;
+    padding-top: 2vh;
+    padding-right: 2vw;
+    padding-bottom: 2vh;
+    padding-left: 2vw;
+    width: 100vw;
+    /*height: 8vh;*/
+    background-color: lightcoral;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2em;
+}
+
+#header h1 {
+    font-size: 200%;
+}
+
+#links {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    font-size: 60%;
+}
+
+#links>* {
+    text-align: center;
+    padding: 0 1vw;
+}

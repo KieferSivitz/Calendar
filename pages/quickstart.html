@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Calendar API Quickstart</title>
+    <meta charset='utf-8' />
+  </head>
+  <body>
+    <div id="divifm">
+      <iframe src="https://calendar.google.com/calendar/embed?src=lckjocdphvruhi8f6b6ge06fhs%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+    </div>
+    <div>
+      <button id="btnCreateEvents" class="btn btn-primary" onclick="makeApiCall();">
+        Create Events
+      </button>  
+    </div>
+
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize-button" style="display: none;">Authorize</button>
+    <button id="signout-button" style="display: none;">Sign Out</button>
+
+    <pre id="content"></pre>
+
+    <script type="text/javascript">
+      // Client ID and API key from the Developer Console
+      var CLIENT_ID = '683338526131-srk87469aci85bsa8m7kgk36a9fph6lh.apps.googleusercontent.com';
+
+      var apiKey = 'AIzaSyCQkl2Ln-nApzqdXdiGhOtZDk2zjCdWMgI'
+
+      // Array of API discovery doc URLs for APIs used by the quickstart
+      var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"];
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      var SCOPES = "https://www.googleapis.com/auth/calendar";
+
+      var authorizeButton = document.getElementById('authorize-button');
+      var signoutButton = document.getElementById('signout-button');
+
+      /**
+       *  On load, called to load the auth2 library and API client library.
+       */
+      function handleClientLoad() {
+        gapi.load('client:auth2', initClient);
+      }
+
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          discoveryDocs: DISCOVERY_DOCS,
+          clientId: CLIENT_ID,
+          scope: SCOPES
+        }).then(function () {
+          // Listen for sign-in state changes.
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+
+          // Handle the initial sign-in state.
+          updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
+          signoutButton.onclick = handleSignoutClick;
+        });
+      }
+
+      /**
+       *  Called when the signed in status changes, to update the UI
+       *  appropriately. After a sign-in, the API is called.
+       */
+      function updateSigninStatus(isSignedIn) {
+        if (isSignedIn) {
+          authorizeButton.style.display = 'none';
+          signoutButton.style.display = 'block';
+        } else {
+          authorizeButton.style.display = 'block';
+          signoutButton.style.display = 'none';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick(event) {
+        gapi.auth2.getAuthInstance().signIn();
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick(event) {
+        gapi.auth2.getAuthInstance().signOut();
+      }
+
+      function makeApiCall(){
+        var resource = {
+          "summary": "My Event",
+          "start": {
+              "dateTime": (new Date()).toISOString()
+          },
+          "end": {
+              "dateTime": (new Date()).toISOString()
+          },
+          "description":"We are organizing events",
+          "location":"US",
+          "attendees":
+          {
+                  "email":"attendee1@gmail.com",
+                  "displayName":"Jhon",
+                  "organizer":true,
+                  "self":false,
+                  "resource":false,
+                  "optional":false,
+                  "responseStatus":"needsAction",
+                  "comment":"This is my demo event",
+                  "additionalGuests":3
+                  
+          }
+        };
+
+        var request = gapi.client.calendar.events.insert({
+          'calendarId': 'lckjocdphvruhi8f6b6ge06fhs@group.calendar.google.com',
+          'resource': resource
+        });
+
+        request.execute(function(resp) {
+          console.log(resp);
+        });
+      }  
+
+    </script>
+
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+  </body>
+</html>
