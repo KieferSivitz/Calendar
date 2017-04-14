@@ -1,9 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>USF - GIFT</title>
+    <title>Calendar</title>
     <meta name="description" content="USF GIFT Site">
     <meta name="author" content="USF-AVC">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -22,17 +22,24 @@
 
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
-    <script src="../js/d3.min.js"></script>
     <script src="../js/header.js"></script>
-    <script src="../js/createAppointment.js"></script>
 </head>
 
 <body>
     <div id="main-content" class="container text-justify">
-        <h2 class="row text-center"><u>Create Appointment</u></h2>
-        <form class="form-horizontal">
+    <div class="row">
+        <div class="col-xs-11">
+            <h2 class="row text-center"><u>Create Appointment</u></h2>
+        </div>
+        <div class="col-xs-1">
+            <br />
+            <button id="authorize-button" style="display: none;" class="btn btn-primary">Authorize</button>
+            <button id="signout-button" style="display: none;" class="btn btn-default">Sign Out</button>
+        </div>
+    </div>
+        <form class="form-horizontal" name="appointmentForm">
             <div class="form-group">
-                <label for="email">Name</label>
+                <label for="name">Name</label>
                 <input type="text" id="name" class="form-control" placeholder="Jane Doe" />
             </div>
             <div class="form-group">
@@ -40,45 +47,52 @@
                 <input type="email" id="email" class="form-control" placeholder="email@website.com" />
             </div>
             <div class="form-group">
-                <label for="data-day">Day</label>
-                <input type="text" id="data-name" class="form-control" placeholder="Tuesday" />
+                <label for="data-day">Date</label>
+                <input type="date" id="data-day" class="form-control" placeholder="Tuesday" />
             </div>
             <div class="form-group">
-                <label for="data-time">Time</label>
-                <input type="text" id="data-name" class="form-control" placeholder="3:00 PM" />
+                <label for="data-day">Time</label>
+                <input type="time" id="data-time" class="form-control" placeholder="Tuesday" />
             </div>
             <div class="form-group">
                 <label>Barber</label>
                 <div class="nested">
                     <div class="radio">
                         <label>
-                            <input name="dataFormat" type="radio" value="lckjocdphvruhi8f6b6ge06fhs@group.calendar.google.com" checked />
+                            <input name="barber" type="radio" value="lckjocdphvruhi8f6b6ge06fhs@group.calendar.google.com" checked />
                             Dave
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input name="dataFormat" type="radio" value="s24qchfsg86ovsfmgl7hvpml9g@group.calendar.google.com" />
+                            <input name="barber" type="radio" value="s24qchfsg86ovsfmgl7hvpml9g@group.calendar.google.com" />
                             John
                         </label>
                     </div>
                     <div class="radio">
                         <label>
-                            <input name="dataFormat" type="radio" value="rflc74tmppokrr07b9k4tjq2m0@group.calendar.google.com" />
+                            <input name="barber" type="radio" value="rflc74tmppokrr07b9k4tjq2m0@group.calendar.google.com" />
                             Tammy
                         </label>
                     </div>
                 </div>
             </div>
             <div class="form-group">
-                <label for="data-name">Comments <small>(Optional)</small></label>
+                <label for="data-comments">Comments <small>(Optional)</small></label>
                 <textarea id="data-comments" class="form-control" rows="6" placeholder="Cut and Color"></textarea>
             </div>
-            <button type="submit" class="form-group btn btn-primary" id="btnCreateEvents" onclick="makeApiCall();">
-                Submit
-            </button>
+            
+            <button id="btnCreateEvents" class="btn btn-primary" onclick="myCalendar.makeApiCall();">
+            Create Events
+            </button>  
         </form>
     </div>
+
+    <script src="../js/calendar.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};myCalendar.handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
 </body>
 
 </html>

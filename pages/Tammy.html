@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Calendar</title>
+    <meta name="description" content="Calendar Site">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <style type="text/css">
+        #main-content {
+            padding-left: 25px;
+            padding-right: 25px;
+        }
+
+        #map {
+            height: 50vh;
+        }
+
+        @media (max-screen-width: 480px) {
+            #map {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+
+        .legend {
+            color: #555;
+            display: inline-flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            align-items: stretch;
+            overflow-y: scroll;
+            height: 300px;
+        }
+
+            .legend .legend-column {
+                display: inline-flex;
+                flex-flow: column nowrap;
+                padding-right: 2px;
+                margin-right: 2px;
+                border-right: 1px solid darkgray;
+            }
+
+                .legend .legend-column .legend-column-header {
+                    border-bottom: 1px solid darkgray;
+                    margin-bottom: 2px;
+                }
+
+                .legend .legend-column .legend-row {
+                    display: inline;
+                }
+
+            .legend i {
+                width: 15px;
+                height: 15px;
+                float: left;
+                margin-right: 8px;
+                opacity: 1;
+                max-height: 100%;
+                max-width: 100%;
+            }
+
+        .info {
+            padding: 2px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+    </style>
+
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/header.js"></script>
+</head>
+
+<body>
+    <div id="main-content" class="container text-justify">
+        <h2 class="row text-center"><u>Appointments Page</u></h2>
+        <div id="divifm" class="row text-center">
+          <iframe src="https://calendar.google.com/calendar/embed?src=rflc74tmppokrr07b9k4tjq2m0%40group.calendar.google.com&ctz=America/New_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+        </div>
+        <!--Add buttons to initiate auth sequence and sign out-->
+        <button id="authorize-button" class="btn btn-primary" style="display: none;">Authorize</button>
+        <br />
+        <button id="signout-button" class="btn btn-default" style="display: none;">Sign Out</button>
+    </div>
+
+    <!-- Scripts to be called after page load -->
+    <script src="../js/calendar.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js"
+      onload="this.onload=function(){};myCalendar.handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
+
+</body>
+</html>
