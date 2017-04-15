@@ -1,6 +1,6 @@
 "use strict";
-var headerUrl = "../Calendar/pages/header.html";
-var footerUrl = "../Calendar/pages/footer.html";
+var headerUrl = "https://kiefersivitz.github.io/Calendar/pages/header.html";
+var footerUrl = "https://kiefersivitz.github.io/Calendar/pages/footer.html";
 
 $(function () {
     $.ajax(headerUrl, {
