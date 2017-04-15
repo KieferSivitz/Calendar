@@ -1,6 +1,6 @@
 "use strict";
-var headerUrl = "../pages/header.html",
-    footerUrl = "../pages/footer.html";
+var headerUrl = "../pages/header.html";
+var footerUrl = "../pages/footer.html";
 
 $(function () {
     $.ajax(headerUrl, {
