@@ -122,13 +122,13 @@ var myCalendar = (function() {
               var newUrl = '';
               switch(barberId) {
                 case "lckjocdphvruhi8f6b6ge06fhs@group.calendar.google.com":
-                  newUrl="http://localhost:8000/pages/Dave.html"
+                  newUrl="../pages/Dave.html"
                   break;
                 case "s24qchfsg86ovsfmgl7hvpml9g@group.calendar.google.com":
-                  newUrl="http://localhost:8000/pages/John.html"
+                  newUrl="../pages/John.html"
                   break;
                 case "rflc74tmppokrr07b9k4tjq2m0@group.calendar.google.com":
-                  newUrl="http://localhost:8000/pages/Tammy.html"
+                  newUrl="../pages/Tammy.html"
                   break;
               }
               document.appointmentForm.action = newUrl;
