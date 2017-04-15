@@ -1,6 +1,6 @@
 var myCalendar = (function() {
   // Client ID and API key from the Developer Console
-  var CLIENT_ID = '683338526131-srk87469aci85bsa8m7kgk36a9fph6lh.apps.googleusercontent.com';
+  var CLIENT_ID = '683338526131-oe05k1beu2m72aarv4vu39qu3gd9c67l.apps.googleusercontent.com';
 
   var apiKey = 'AIzaSyCQkl2Ln-nApzqdXdiGhOtZDk2zjCdWMgI'
 
