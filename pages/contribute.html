@@ -97,6 +97,7 @@
         var tmp = localStorage.getItem('selectedBarber') || 'barber1';
         var tmp2 = document.getElementById(tmp);
         tmp2.checked = true;
+        localStorage.setItem('selectedBarber', 'barber1');
     </script>
 </body>
 
