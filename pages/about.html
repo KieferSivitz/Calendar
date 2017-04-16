@@ -19,14 +19,6 @@
     <script src="../js/jquery-3.1.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/header.js"></script>
-    <script type="text/javascript">
-        function navigateBarber() {
-            var changePage = setTimeout(function(value){
-                var tmp = document.getElementById(value);
-                tmp.checked = true;
-            }, 3000);
-        }
-    </script>
 </head>
 
 <body>
@@ -39,7 +31,7 @@
             <div class="col-sm-12 col-md-9 text-justify">
                 Dave has been working with us at Bladez for 14 years. He has a steady hand, a keen eye, and a passion for making people look their best. Schedule an appointment with Dave today and look better tomorrow.
                 <p></p>
-                <a href="contribute.html" onclick="navigateBarber('barber1')" class="btn btn-info">Schedule and appointment with Dave</a>
+                <a href="contribute.html" id="schedule1" class="btn btn-info">Schedule and appointment with Dave</a>
             </div>
         </div>
         <hr class="row">
@@ -48,7 +40,7 @@
             <div class="col-sm-12 col-md-9 text-justify">
                 John has worked with us at Bladez for 3 years now. He is always friendly, funny, and ready to make you look sharp. Schedule an appointment with John today and come on over.
                 <p></p>
-                <a href="contribute.html" onclick="navigateBarber('barber2')" class="btn btn-info">Schedule and appointment with John</a>
+                <a href="contribute.html" id="schedule2" class="btn btn-info">Schedule and appointment with John</a>
             </div>
         </div>
         <hr class="row">
@@ -57,10 +49,33 @@
             <div class="col-sm-12 col-md-9 text-justify">
                 Tammy has worked with us here at Bladez for 9 years. She has a passion for great haircuts and is like a master craftsman with a straight razor. Schedule an appointment with Tammy today and get ready to look and feel your best.
                 <p></p>
-                <a href="contribute.html" onclick="navigateBarber('barber3')" class="btn btn-info">Schedule and appointment with Tammy</a>
+                <a href="contribute.html" id="schedule3" class="btn btn-info">Schedule and appointment with Tammy</a>
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        var selectedBarber;
+        selectedBarber = 'barber3';
+        var el1 = document.getElementById('schedule1');
+        var el2 = document.getElementById('schedule2');
+        var el3 = document.getElementById('schedule3');
+        el1.onclick = scheduleOne;
+        el2.onclick = scheduleTwo;
+        el3.onclick = scheduleThree;
+
+
+        function scheduleOne() {
+            localStorage.setItem('selectedBarber', 'barber1');
+        }
+        function scheduleTwo() {
+            localStorage.setItem('selectedBarber', 'barber2');
+        }
+        function scheduleThree() {
+            localStorage.setItem('selectedBarber', 'barber3');
+        }
+    </script>
 </body>
 
 </html>

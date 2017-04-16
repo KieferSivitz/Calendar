@@ -93,6 +93,11 @@
       onload="this.onload=function(){};myCalendar.handleClientLoad()"
       onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
+    <script type="text/javascript">
+        var tmp = localStorage.getItem('selectedBarber');
+        var tmp2 = document.getElementById(tmp);
+        tmp2.checked = true;
+    </script>
 </body>
 
 </html>
